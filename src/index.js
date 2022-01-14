@@ -2,9 +2,20 @@ const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const { engine } = require("express-handlebars");
+const route = require("./routes");
+const db = require("../src/config/db/configdb");
 const app = express();
+const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+
+// Connect database
+db.connect();
 
 // HTTP Logger
 app.use(morgan("combined"));
@@ -12,20 +23,9 @@ app.use(morgan("combined"));
 // Template engine
 app.engine("hbs", engine({ extname: ".hbs", defaultLayout: "main" }));
 app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "resources/views"));
+app.set("views", path.join(__dirname, "resources", "views"));
 
 // Routing
-app.get("/", (req, res) => {
-  res.render("home");
-});
+route(app);
 
-app.get("/search", (req, res) => {
-  res.render("search");
-});
-
-app.get("/news", (req, res) => {
-  console.log(req.query.q);
-  res.render("news");
-});
-
-app.listen(3000);
+app.listen(PORT);

@@ -1,0 +1,43 @@
+<form>
+  <div class="form-control-sm">
+    <label for="input-label">Nhập tiêu đề</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Nhập tiêu đề tại đây"
+    />
+  </div>
+  <div class="form-control-sm">
+    <label for="exampleInputPassword1">Mô tả</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      placeholder="Nhập mô tả tại đây"
+    />
+  </div>
+  <div class="btn-group-md">
+    <button
+      type="button"
+      class="btn btn-info dropdown-toggle"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Thẻ
+    </button>
+    <div class="dropdown-menu w-200">
+      <a class="dropdown-item" href="#">Ít quan trọng</a>
+      <a class="dropdown-item" href="#">Quan trọng</a>
+      <a class="dropdown-item" href="#">Khẩn cấp</a>
+    </div>
+  </div>
+  <a
+    class="btn btn-primary"
+    href="/tasks/add-task"
+    type="submit"
+    method="POST"
+  >Thêm mới</a>
+</form>

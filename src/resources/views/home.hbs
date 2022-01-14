@@ -1,3 +1,35 @@
-<form method="get" action="/search">
-  <button type="submit" class="btn btn-primary">Go to search screen</button>
-</form>
+<div class="mt-4">
+  <div class="row">
+    {{#each tasks}}
+      <div class="col-sm6 col-lg-4">
+        <div class="card card-course-item" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <div class="card-text">
+              {{this.description}}
+            </div>
+            <div class="card-text">
+              {{this.createAt}}
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                  <a
+                    href="/tasks/{{this.slug}}"
+                    class="btn btn-primary btn-md"
+                  >Mở</a>
+                </div>
+                <div class="col-sm">
+                  <a
+                    href="/tasks/delete/{{this.slug}}"
+                    class="btn btn-danger btn-md"
+                  >Xóa</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
